@@ -5,7 +5,6 @@ require "lazop_api_client/version"
 
 require 'rest-client'
 require 'json'
-require 'openssl'
 require 'cgi'
 require 'logger'
 require 'socket'
