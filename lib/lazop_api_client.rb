@@ -111,7 +111,8 @@ module LazopApiClient
                     param_str += CGI.escape(v.to_s())
                 end
             end
-
+            # Adding Fixie to give Heroku a static IP - needed for Lazada whitelisting
+            RestClient.proxy = ENV["FIXIE_URL"]
             res = JSON.parse(RestClient.get(url + param_str, header_params))
 
             return res
@@ -139,7 +140,9 @@ module LazopApiClient
                     all_params[k] = File.open(v, "rb")
                 end
             end
-
+            
+            # Adding Fixie to give Heroku a static IP - needed for Lazada whitelisting
+            RestClient.proxy = ENV["FIXIE_URL"]
             res = JSON.parse(RestClient.post(url,all_params))
             return res
         end
